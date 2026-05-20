@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://aegisai:changeme@postgres:5432/aegisai
+      - REDIS_URL=redis://redis:6379/0
+      - CHROMA_HOST=chroma
+      - NEO4J_URI=bolt://neo4j:7687
+    depends_on:
+      - postgres
+      - redis
+      - chroma
+      - neo4j
+    volumes:
+      - .:/app
+
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: aegisai
+      POSTGRES_PASSWORD: changeme
+      POSTGRES_DB: aegisai
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  chroma:
+    image: chromadb/chroma:0.4.22
+    ports:
+      - "8000:8000"
+
+  neo4j:
+    image: neo4j:5.17
+    environment:
+      NEO4J_AUTH: neo4j/password
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+
+volumes:
+  postgres_data:
+  neo4j_data:
