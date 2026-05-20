@@ -134,7 +134,7 @@ FastAPI Backend API Layer
         ▼
 Multi-Agent Orchestration Layer
         │
- ┌───────────────┬───────────────┬───────────────┐
+ ┌───────────────┬───────────────┬
  ▼               ▼               ▼
 OCR Agent    Vision Agent    NER Agent
  │               │               │
@@ -215,15 +215,6 @@ npm install
 
 npm run dev
 ```
-
----
-
-# 🎥 Demo Preview
-
-| Dashboard | Knowledge Graph | AI Workflow |
-|---|---|---|
-| ![](assets/dashboard.png) | ![](assets/graph.png) | ![](assets/workflow.gif) |
-
 ---
 
 # 📊 Development Activity
