@@ -1,0 +1,144 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+*.dll
+*.dylib
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  * https://pyinstaller.readthedocs.io/en/latest/usage.html#cmdoption-onefile
+*.onefile-build-dir
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Desktop.ini
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Database
+*.db
+*.sqlite3
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+
+# Docker
+*.docker
+*.dockerignore
+
+# Backend specific
+backend/.env
+backend/__pycache__/
+backend/*.pyc
+backend/*.pyo
+backend/*.pyd
+backend/*.so
+backend/*.pyc
+backend/.pytest_cache/
+backend/.coverage
+backend/coverage.xml
+
+# Frontend specific
+frontend/node_modules/
+frontend/.next/
+frontend/.nuxt/
+frontend/out/
+frontend/.cache/
+frontend/dist/
+frontend/build/
+
+# Test coverage
+.coverage
+.coverage.*
+.cache
+.nyc_output/
+.nyc_output.*
+
+# Local development settings
+*.local
+*.dev
+*.config
+
+# Python
+*.pyc
+__pycache__/
+.Python
+.pytest_cache/
+.coverage
+.coverage.*
+
+# Logs
+logs/
+*.log
+
+# Environment
+.env
+.env.*
+
+# Build artifacts
+*.build
+*.dist
+*.egg-info
+
+# Project-specific exclusions
+# Add any project-specific folders that shouldn't be uploaded to GitHub here
+# For example:
+# datasets/
+# data/
+# uploads/
+# output/
