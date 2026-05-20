@@ -1,0 +1,93 @@
+version: '3.8'
+
+services:
+  # Backend service
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/aegisai
+      - REDIS_URL=redis://redis:6379/0
+      - NEO4J_URI=neo4j://neo4j:password@neo4j:7687
+      - SECRET_KEY=your-secret-key-here
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    depends_on:
+      - db
+      - redis
+      - neo4j
+    volumes:
+      - ./backend:/app
+    command: >
+      sh -c "python /app/scripts/init_db.py &&
+            uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload"
+
+  # Database service
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=aegisai
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d aegisai"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Redis service
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Neo4j service
+  neo4j:
+    image: neo4j:5.10
+    environment:
+      - NEO4J_AUTH=neo4j/password
+      - NEO4J_dbms_memory_pagecache_size=512MB
+      - NEO4J_dbms_memory_heap_initial__size=512MB
+      - NEO4J_dbms_memory_heap_max__size=512MB
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p password 'RETURN 1'"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Ollama service (for local LLMs)
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  postgres_data:
+  redis_data:
+  neo4j_data:
+  neo4j_logs:
+  ollama_data:
