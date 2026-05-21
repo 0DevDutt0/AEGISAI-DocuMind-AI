@@ -218,14 +218,6 @@ npm run dev
 
 ---
 
-# 🎥 Demo Preview
-
-| Dashboard | Knowledge Graph | AI Workflow |
-|---|---|---|
-| ![](assets/dashboard.png) | ![](assets/graph.png) | ![](assets/workflow.gif) |
-
----
-
 # 📊 Development Activity
 
 <p align="center">
