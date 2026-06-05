@@ -134,7 +134,7 @@ FastAPI Backend API Layer
         ▼
 Multi-Agent Orchestration Layer
         │
- ┌───────────────┬───────────────┬───────────────┐
+ ┌───────────────┬───────────────┬
  ▼               ▼               ▼
 OCR Agent    Vision Agent    NER Agent
  │               │               │
