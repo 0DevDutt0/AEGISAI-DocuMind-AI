@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException
-from app.services.graph_service import GraphService
 
 router = APIRouter()
 

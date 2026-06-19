@@ -3,7 +3,13 @@
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import ForceGraph2D from 'react-force-graph2d';
+import dynamic from 'next/dynamic';
+
+// react-force-graph-2d references `window` at module load, so it must be
+// client-only — otherwise static prerendering of /dashboard crashes.
+const ForceGraph2D = dynamic(() => import('react-force-graph-2d'), {
+  ssr: false,
+});
 import { Search, Plus, Eye, Download } from 'lucide-react';
 
 interface Node {
@@ -11,6 +17,11 @@ interface Node {
   name: string;
   type: 'entity' | 'concept' | 'document' | 'relationship';
   size: number;
+  // Simulation coordinates injected by react-force-graph at runtime.
+  x?: number;
+  y?: number;
+  fx?: number;
+  fy?: number;
 }
 
 interface Link {
@@ -91,7 +102,7 @@ export function KnowledgeGraph() {
               graphData={{ nodes, links }}
               nodeLabel="name"
               nodeVal="size"
-              nodeColor={(node: Node) => {
+              nodeColor={(node: any) => {
                 switch (node.type) {
                   case 'concept':
                     return '#3b82f6';
@@ -109,10 +120,10 @@ export function KnowledgeGraph() {
               linkWidth={1}
               linkDirectionalArrowLength={6}
               linkDirectionalArrowRelPos={1}
-              onNodeClick={(node: Node) => {
+              onNodeClick={(node: any) => {
                 console.log('Node clicked:', node);
               }}
-              onNodeDragEnd={(node: Node) => {
+              onNodeDragEnd={(node: any) => {
                 node.fx = node.x;
                 node.fy = node.y;
               }}

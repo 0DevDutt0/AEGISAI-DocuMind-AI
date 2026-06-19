@@ -1,3 +1,5 @@
+from typing import Optional
+
 from neo4j import GraphDatabase
 from app.core.config import settings
 
@@ -11,7 +13,7 @@ class Neo4jDriver:
     def close(self):
         self.driver.close()
 
-    def execute_query(self, query: str, parameters: dict = None):
+    def execute_query(self, query: str, parameters: Optional[dict] = None):
         with self.driver.session() as session:
             result = session.run(query, parameters)
             return result.data()

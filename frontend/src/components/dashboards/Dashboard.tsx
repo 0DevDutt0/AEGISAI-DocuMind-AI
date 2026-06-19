@@ -74,7 +74,7 @@ export default function Dashboard() {
             <div className="text-sm text-gray-500">5 minutes ago</div>
           </div>
           <div className="flex items-center justify-between border-b pb-2">
-            <div>Chat query: What is the company's revenue?</div>
+            <div>Chat query: What is the company&apos;s revenue?</div>
             <div className="text-sm text-gray-500">10 minutes ago</div>
           </div>
         </div>

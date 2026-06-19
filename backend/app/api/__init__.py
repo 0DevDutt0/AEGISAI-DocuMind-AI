@@ -1,5 +1,3 @@
-from fastapi import APIRouter
-from app.api.v1 import endpoints
-
-api_router = APIRouter()
-api_router.include_router(endpoints.router, prefix="/v1", tags=["v1"])
+# API package.
+# The application router is assembled in app.api.routes (package) and wired up
+# in app.main via `from app.api.routes import api_router`.

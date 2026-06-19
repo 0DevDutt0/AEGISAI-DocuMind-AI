@@ -1,5 +1,5 @@
+from datetime import timedelta
 from sqlalchemy.orm import Session
-from app.schemas.security import TokenData
 from app.core.security import create_access_token, verify_password
 from app.models.user import User
 
@@ -9,7 +9,7 @@ class SecurityService:
 
     def authenticate_user(self, username: str, password: str):
         user = self.db.query(User).filter(User.username == username).first()
-        if not user or not verify_password(password, user.hashed_password):
+        if not user or not verify_password(password, user.hashed_password):  # type: ignore[arg-type]
             return None
 
         # Create access token

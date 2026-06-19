@@ -3,15 +3,12 @@ from opentelemetry import trace
 from opentelemetry.exporter.prometheus import PrometheusMetricReader
 from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
-from opentelemetry.exporter.jaeger.thrift import JaegerExporter
 
 class Observability:
     def __init__(self):
         # Setup tracing
         trace.set_tracer_provider(TracerProvider())
-        tracer = trace.get_tracer(__name__)
+        self.tracer = trace.get_tracer(__name__)
 
         # Setup metrics
         metric_reader = PrometheusMetricReader()

@@ -2,10 +2,14 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
-const Badge = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, variant = "default", ...props }, ref) => {
+type BadgeVariant = "default" | "secondary" | "destructive" | "warning";
+
+export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
+  variant?: BadgeVariant;
+}
+
+const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
+  ({ className, variant = "default", ...props }, ref) => {
   const baseClasses = "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2";
 
   const variantClasses = {

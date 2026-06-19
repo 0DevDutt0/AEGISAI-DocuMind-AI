@@ -1,6 +1,5 @@
 from sqlalchemy.orm import Session
 from app.models.document import Document
-from app.schemas.document import DocumentCreate
 
 class DocumentService:
     def __init__(self, db: Session):

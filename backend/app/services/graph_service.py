@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-from app.schemas.graph import Entity, Relationship
 
 class GraphService:
     def __init__(self, db: Session):

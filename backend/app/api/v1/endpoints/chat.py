@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException
-from app.services.chat_service import ChatService
 
 router = APIRouter()
 

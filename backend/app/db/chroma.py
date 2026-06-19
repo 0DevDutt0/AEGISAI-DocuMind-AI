@@ -1,5 +1,6 @@
+from typing import Optional
+
 import chromadb
-from app.core.config import settings
 
 class ChromaDBClient:
     def __init__(self):
@@ -9,7 +10,7 @@ class ChromaDBClient:
             metadata={"hnsw:space": "cosine"}
         )
 
-    def add_documents(self, documents: list, metadatas: list = None):
+    def add_documents(self, documents: list, metadatas: Optional[list] = None):
         self.collection.add(
             documents=documents,
             metadatas=metadatas

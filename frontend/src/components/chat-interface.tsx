@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Send, Bot, User, FileText, MessageSquare } from 'lucide-react';
+import { Send, Bot, User, FileText, MessageSquare, Activity } from 'lucide-react';
 
 interface Message {
   id: string;

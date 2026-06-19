@@ -1,9 +1,7 @@
 from fastapi import FastAPI
 from app.api.routes import api_router
 from app.core.config import settings
-from app.core.security import get_password_hash
 from app.db.session import Base, engine
-from app.services.document_service import DocumentService
 
 app = FastAPI(
     title=settings.PROJECT_NAME,

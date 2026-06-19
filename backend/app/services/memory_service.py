@@ -1,6 +1,5 @@
 from sqlalchemy.orm import Session
 from app.models.memory import MemoryItem
-from app.schemas.memory import MemoryCreate
 
 class MemoryService:
     def __init__(self, db: Session):

@@ -9,6 +9,7 @@ import { AnalyticsDashboard } from '@/components/analytics-dashboard';
 import { Observability } from '@/components/observability';
 import { ChatInterface } from '@/components/chat-interface';
 import { DocumentManager } from '@/components/document-manager';
+import { FileText, Users, Activity, Clock, TrendingUp } from 'lucide-react';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');

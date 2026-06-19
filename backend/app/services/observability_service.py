@@ -1,4 +1,3 @@
-from typing import Dict, Any
 from sqlalchemy.orm import Session
 from app.schemas.observability import TraceResponse
 
