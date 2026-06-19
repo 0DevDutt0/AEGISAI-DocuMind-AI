@@ -1,8 +1,10 @@
 name: Deploy
 
+# Manual-only: this deploys over SSH using DEPLOY_HOST / DEPLOY_KEY secrets.
+# Until those are configured (and a server exists), running on every push just
+# fails. Trigger it from the Actions tab ("Run workflow") once secrets are set.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
   deploy:
